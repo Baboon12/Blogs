@@ -14,6 +14,7 @@ include('includes/header.php');
                     <h2>View Category
                         <a href="add_category.php" class="btn btn-primary float-end">Add Category</a>
                     </h2>
+
                 </div>
                 <div class="card-body">
 
@@ -39,7 +40,7 @@ include('includes/header.php');
                     ?>
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table class="table table-bordered table-hover" id="myDataTable">
                             <thead>
                                 <tr>
                                     <th>ID</th>

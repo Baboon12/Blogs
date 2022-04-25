@@ -44,7 +44,7 @@
                             <?= $_SESSION['auth_user']['user_name']; ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">My profile</a></li>
+                            <!-- <li><a class="dropdown-item" href="#">My profile</a></li> -->
                             <li>
                                 <form method="POST" action="allcode.php">
                                     <button type="submit" class="dropdown-item" name="logout_btn">Logout</button>

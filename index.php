@@ -1,6 +1,11 @@
 <?php
+
+$page_title = "Home";
+$meta_description = "Blogging Website";
+$meta_keyword = "WPL mini project";
+
 session_start();
-include('admin/config/dbconfig.php');
+// include('admin/config/dbconfig.php');
 include('./includes/header.php');
 include('./includes/navbar.php');
 

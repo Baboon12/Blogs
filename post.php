@@ -1,6 +1,26 @@
 <?php
 session_start();
 include('admin/config/dbconfig.php');
+
+if (isset($_GET['title'])) {
+    $slug = mysqli_real_escape_string($con, $_GET['title']);
+    $post_query = "SELECT * FROM posts WHERE slug='$slug'";
+    $post_query_run = mysqli_query($con, $post_query);
+    if (mysqli_num_rows($post_query_run) > 0) {
+        $post_item = mysqli_fetch_array($post_query_run);
+        $page_title = $post_item['meta_title'];
+        $meta_description = $post_item['meta_description'];
+        $meta_keyword = $post_item['meta_keyword'];
+    } else {
+        $page_title = "Post Page";
+        $meta_description = "Blogging Website";
+        $meta_keyword = "WPL mini project";
+    }
+} else {
+    $page_title = "Post Page";
+    $meta_description = "Blogging Website";
+    $meta_keyword = "WPL mini project";
+}
 include('./includes/header.php');
 include('./includes/navbar.php');
 
@@ -9,7 +29,7 @@ include('./includes/navbar.php');
 <div class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <?php
                 if (isset($_GET['title'])) {
                     $slug = mysqli_real_escape_string($con, $_GET['title']);
@@ -52,7 +72,7 @@ include('./includes/navbar.php');
 
                 ?>
             </div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="card">
                     <div class="card-header">
                         <h4>Area</h4>
@@ -61,7 +81,7 @@ include('./includes/navbar.php');
                         Body
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

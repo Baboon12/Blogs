@@ -1,4 +1,8 @@
 <?php
+$page_title = "Login";
+$meta_description = "Blogging Website";
+$meta_keyword = "WPL mini project";
+
 include('./includes/header.php');
 if (isset($_SESSION['auth'])) {
 
@@ -53,6 +57,36 @@ if (isset($_SESSION['auth'])) {
 </div>
 
 
+<script>
+    const form = document.querySelector('.form');
+    const username = document.querySelector('#username');
+    const password = document.querySelector('#password');
+
+    const test = () => {
+        const usernamevalue = username.value.trim();
+        const passwordvalue = password.value.trim();
+        
+        //custom validation
+        if (usernamevalue === '') {
+            alert('Username Is Mandatory');
+            return false;
+        } else if (passwordvalue === '') {
+            alert('Password is Mandatory');
+            return false;
+        } else {
+            alert('Login Successful');
+            return true;
+        }
+    }
+
+
+    const isEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+ </script>
+
+
 <?php
-include('./includes/footer.php');
+include('./includes/scripts.php');
 ?>

@@ -8,9 +8,8 @@ include('includes/header.php');
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <?php  include('../message.php') ?>
+        <?php include('../message.php') ?>
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
     <!-- Content Row -->
@@ -23,8 +22,16 @@ include('includes/header.php');
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Earnings (Monthly)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                Total Posts</div>
+                            <?php
+                            $dashboard_post_query = "SELECT * FROM  posts";
+                            $dashboard_post_query_run = mysqli_query($con, $dashboard_post_query);
+                            if ($post_total = mysqli_num_rows($dashboard_post_query_run)) {
+                                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>$post_total</div>";
+                            } else {
+                                echo '<div class="h5 mb-0 font-weight-bold text-gray-800">No Data</div>';
+                            }
+                            ?>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -41,8 +48,16 @@ include('includes/header.php');
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Earnings (Annual)</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                Total Categories</div>
+                            <?php
+                            $dashboard_category_query = "SELECT * FROM  categories";
+                            $dashboard_category_query_run = mysqli_query($con, $dashboard_category_query);
+                            if ($category_total = mysqli_num_rows($dashboard_category_query_run)) {
+                                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>$category_total</div>";
+                            } else {
+                                echo '<div class="h5 mb-0 font-weight-bold text-gray-800">No Data</div>';
+                            }
+                            ?>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -58,18 +73,17 @@ include('includes/header.php');
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Users
                             </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            $dashboard_user_query = "SELECT * FROM  users";
+                            $dashboard_user_query_run = mysqli_query($con, $dashboard_user_query);
+                            if ($user_total = mysqli_num_rows($dashboard_user_query_run)) {
+                                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>$user_total</div>";
+                            } else {
+                                echo '<div class="h5 mb-0 font-weight-bold text-gray-800">No Data</div>';
+                            }
+                            ?>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -81,13 +95,21 @@ include('includes/header.php');
 
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                Blocked Users</div>
+                            <?php
+                            $dashboard_user_query = "SELECT * FROM  users WHERE status='1'";
+                            $dashboard_user_query_run = mysqli_query($con, $dashboard_user_query);
+                            if ($user_total = mysqli_num_rows($dashboard_user_query_run)) {
+                                echo "<div class='h5 mb-0 font-weight-bold text-gray-800'>$user_total</div>";
+                            } else {
+                                echo '<div class="h5 mb-0 font-weight-bold text-gray-800">No Data</div>';
+                            }
+                            ?>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -98,7 +120,7 @@ include('includes/header.php');
         </div>
     </div>
 
-<!-- 
+    <!-- 
     <div class="row">
 
         <div class="col-lg-6 mb-4">

@@ -1,4 +1,7 @@
 <?php
+$page_title = "Register";
+$meta_description = "Blogging Website";
+$meta_keyword = "WPL mini project";
 include('./includes/header.php');
 if (isset($_SESSION['auth'])) {
     $_SESSION['message'] = "Already Logged In";
@@ -20,7 +23,7 @@ if (isset($_SESSION['auth'])) {
         <div class="header">
             <h2>Create Account</h2>
         </div>
-        <form action="registercode.php" method="POST" class="form" id="form">
+        <form action="registercode.php" method="POST" class="form" id="form" onsubmit="return test()">
             <div class="form-control">
                 <label for="username">Username</label>
                 <input type="text" placeholder="John Doe" id="username" name="username" autocomplete="off" />
@@ -56,9 +59,56 @@ if (isset($_SESSION['auth'])) {
             <button type="submit" name="submit" class="primary_btn">Submit</button>
         </form>
     </div>
-
 </div>
 
+<script>
+    const form = document.querySelector('.form');
+    const username = document.querySelector('#username');
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#password');
+    const password2 = document.querySelector('#password2');
+
+    const test = () => {
+        const usernamevalue = username.value.trim();
+        const emailvalue = email.value.trim();
+        const passwordvalue = password.value.trim();
+        const password2value = password2.value.trim();
+
+        //custom validation
+        if (usernamevalue === '') {
+            alert('Username Is Mandatory');
+            return false;
+        } else if (emailvalue === '') {
+            alert('Email Cannot be Blank');
+            return false;
+        } else if (!isEmail(emailvalue)) {
+            alert('Please Enter a valid email');
+            return false;
+        } else if (passwordvalue === '') {
+            alert('Password is Mandatory');
+            return false;
+        } else if (passwordvalue.length < 8) {
+            alert('Password Length Should be Atleast 8 Characters Long!');
+            return false;
+        } else if (password2value === '') {
+            alert('Password Confirmation is Mandatory');
+            return false;
+        } else if (password2value !== passwordvalue) {
+            alert('Passwords Not Matching');
+            return false;
+        } else {
+            alert('Registration Successful');
+            return true;
+        }
+    }
+
+
+    const isEmail = (email) => {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+ </script>
+
 <?php
-include('./includes/footer.php');
+include('./includes/scripts.php');
 ?>

@@ -16,6 +16,15 @@ if (isset($_POST['submit'])) {
             $user_id = $data['id'];
             $user_name = $data['username'];
             $user_role = $data['role_as'];
+            $myusername = $data['username'];
+            $mypass = $data['pass'];
+        }
+
+        if ($username == $myusername and $password == $mypass) {
+            if (isset($_POST['remember'])) {
+                setcookie('username', $username, time() + 60 * 60 * 5);
+                setcookie('password', $password, time() + 60 * 60 * 5);
+            }
         }
 
         $_SESSION['auth'] = true; // login successful
