@@ -23,6 +23,7 @@ include('includes/header.php');
                     <h2>Registered Users
                         <a href="admin-add.php" class="float-end btn btn-info">Add Admin</a>
                     </h2>
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
