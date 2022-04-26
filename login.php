@@ -51,7 +51,8 @@ if (isset($_SESSION['auth'])) {
 
             <button type="reset" class="secondary_btn">Cancel</button>
             <button type="submit" class="primary_btn" name="submit">Submit</button>
-            <a href="#" id="forgot_pass">Forgot Password?</a>
+            <a href="register" id="forgot_pass">New User?</a>
+            <!-- <a href="username.php" id="forgot_pass">Forgot Password?</a> -->
         </form>
     </div>
 </div>

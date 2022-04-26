@@ -57,6 +57,7 @@ if (isset($_SESSION['auth'])) {
             </div>
             <button type="reset" class="secondary_btn">Cancel</button>
             <button type="submit" name="submit" class="primary_btn">Submit</button>
+            <a href="login.php" id="forgot_pass">Login?</a>
         </form>
     </div>
 </div>
@@ -107,7 +108,7 @@ if (isset($_SESSION['auth'])) {
         const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
- </script>
+</script>
 
 <?php
 include('./includes/scripts.php');

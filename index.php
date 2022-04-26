@@ -48,7 +48,7 @@ include('./includes/navbar.php');
         <div class="row">
             <div class="col-md-9">
                 <h3 class="text-dark mb-4">Know Us</h3>
-                <section>
+                <section id="sec" onmousedown="mouseDown()" onmouseup="mouseUp()">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus natus ea animi atque odit! Quas debitis nihil laudantium ut esse consequatur? Molestiae asperiores quod repellendus quas, numquam pariatur, nihil nemo labore vitae consequuntur voluptates nobis saepe nulla totam, sequi libero accusantium iure! Blanditiis pariatur dolore molestias doloribus laboriosam corrupti. Quibusdam, nihil nesciunt doloremque quidem eius expedita earum maxime dolores rerum non unde voluptates ea nostrum, recusandae quia iusto amet laudantium eum nemo tenetur architecto eveniet optio vitae nulla? Maxime, sequi in. Praesentium iusto eveniet commodi ducimus cum provident, facere ullam quo perspiciatis quisquam reprehenderit quos, tempora iste veritatis. Maiores, aut.
                 </section>
             </div>
@@ -100,6 +100,17 @@ include('./includes/navbar.php');
         </div>
     </div>
 </div>
+
+
+<script>
+    function mouseDown() {
+        document.getElementById("sec").style.color = "orange";
+    }
+
+    function mouseUp() {
+        document.getElementById("sec").style.color = "black";
+    }
+</script>
 
 <?php
 include('./includes/footer.php');
